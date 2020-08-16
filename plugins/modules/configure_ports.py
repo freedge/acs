@@ -29,9 +29,9 @@ from ansible.module_utils.basic import AnsibleModule
 from ansible.module_utils.connection import Connection
 
 
-def computeDiff(module, inventory, real): ce que je veux
+def computeDiff(module, inventory, real):
     if len(inventory) != len(real):
-        module.warn("inventory does not contain the full config %d %d" % (len(inventory), len(real)))
+        module.warn("inventory does not contain the full config: %d %d" % (len(inventory), len(real)))
         return inventory
 
     diff = []
