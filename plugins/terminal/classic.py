@@ -31,4 +31,3 @@ class TerminalModule(TerminalBase):
 
     def warning(self, msg):
         self._connection.queue_message('warning', msg)
-

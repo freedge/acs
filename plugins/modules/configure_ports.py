@@ -31,7 +31,7 @@ from ansible.module_utils.connection import Connection
 
 def computeDiff(module, inventory, real):
     if len(inventory) != len(real):
-        module.warn("inventory does not contain the full config %d %d"% (len(inventory), len(real)))
+        module.warn("inventory does not contain the full config %d %d" % (len(inventory), len(real)))
         return inventory
 
     diff = []
@@ -41,15 +41,11 @@ def computeDiff(module, inventory, real):
             module.warn("%d: %s vs %s" % (i, inventory[i], real[i]))
             diff = diff + [inventory[i]]
     return diff
-            
-        
-        
-    
+
 
 def main():
     argument_spec = dict(ports=dict(type="list"))
-    module = AnsibleModule(argument_spec=argument_spec,
-                                    supports_check_mode=True)
+    module = AnsibleModule(argument_spec=argument_spec, supports_check_mode=True)
     connection = Connection(module._socket_path)
 
     ports = module.params['ports']
@@ -61,11 +57,10 @@ def main():
         readObject = {}
         portId = int(port['port'])
         result = connection.send_command("list_configuration ports/serial_ports/%d" % portId)
-        actualList = [ r for r in result.split("\n") if r ]
-        actualPort += [ actualList ]
+        actualList = [r for r in result.split("\n") if r]
+        actualPort += [actualList]
         if len(computeDiff(module, port['list_configuration'], actualList)) > 0:
             changed = True
-
 
     result = {'changed': changed, 'ports': ports, 'actualPorts': actualPort}
 

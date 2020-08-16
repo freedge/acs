@@ -13,7 +13,6 @@ import json
 from ansible.errors import AnsibleConnectionFailure
 from ansible.module_utils.common._collections_compat import Mapping
 from ansible.module_utils._text import to_text
-#from ansible.module_utils.network.common.utils import to_list
 from ansible.plugins.cliconf import CliconfBase
 
 
@@ -129,7 +128,7 @@ class Cliconf(CliconfBase):
 
         try:
             self.send_command('exit all')
-            for cmd in list(candidate): #to_list(candidate):
+            for cmd in list(candidate):
                 if isinstance(cmd, Mapping):
                     requests.append(cmd['command'])
                     responses.append(self.send_command(**cmd))

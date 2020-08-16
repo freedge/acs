@@ -40,6 +40,10 @@ steps:
     bash examples/test.sh
   displayName: 'Test somehow'
 
+- script: |
+    flake8
+  displayName: 'Static code analysis'
+
 - task: GithubRelease@0
   displayName: 'Create GitHub Release'   
   condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/heads/master'))
