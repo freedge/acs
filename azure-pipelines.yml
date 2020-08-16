@@ -46,3 +46,12 @@ steps:
     repositoryName: freedge/acs
     assets: |
       freedge-acs-*.tar.gz
+
+- script: |
+    ansible-galaxy collection publish --token $(galaxy_token) freedge-acs-*.tar.gz
+  displayName: 'Publish on Galaxy'
+  condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/heads/master'))
+
+
+
+
