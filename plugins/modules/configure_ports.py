@@ -54,7 +54,6 @@ def main():
     if not module.check_mode:
         raise NotImplementedError("only check mode supported")
     for port in ports:
-        readObject = {}
         portId = int(port['port'])
         result = connection.send_command("list_configuration ports/serial_ports/%d" % portId)
         actualList = [r for r in result.split("\n") if r]
