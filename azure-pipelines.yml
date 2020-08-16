@@ -32,7 +32,7 @@ steps:
   displayName: 'Install dependencies'
 
 - script: |
-    sed -i "s/^version:.*/version: $(major).$(minor).$(revision)/"
+    sed -i "s/^version:.*/version: $(major).$(minor).$(revision)/" galaxy.yml
     ansible-galaxy collection build
   displayName: 'Package'
 
