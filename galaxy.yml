@@ -1,0 +1,16 @@
+namespace: freedge
+name: acs
+version: 0.0.1
+readme: README.md
+authors:
+  - Francois Rigault <rigault.francois@gmail.com>
+description: unofficial module to manage Avocent ACS
+license:
+  - GPL-2.0-or-later
+tags:
+  - avocent
+  - acs
+dependencies: {}
+repository: https://github.com/freedge/acs
+documentation: https://github.com/freedge/acs
+issues: https://github.com/freedge/acs/issues
