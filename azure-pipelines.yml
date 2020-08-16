@@ -8,6 +8,12 @@ trigger:
 
 pool:
   vmImage: 'ubuntu-latest'
+variables:
+  buildPlatform: 'x64'
+  buildConfiguration: 'release'
+  major: 0
+  minor: 1
+  revision: $[counter('rev', 0)]
 strategy:
   matrix:
     Python36:
@@ -26,5 +32,17 @@ steps:
   displayName: 'Install dependencies'
 
 - script: |
+    sed -i "s/^version:.*/version: $(major).$(minor).$(revision)/"
     ansible-galaxy collection build
   displayName: 'Package'
+
+- task: GithubRelease@0
+  displayName: 'Create GitHub Release'   
+  condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/heads/master'))
+  inputs:
+    tagSource: manual
+    tag: v$(major).$(minor).$(revision)
+    gitHubConnection: github.com_freedge
+    repositoryName: freedge/acs
+    assets: |
+      freedge-acs-*.tar.gz
