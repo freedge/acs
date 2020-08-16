@@ -36,6 +36,10 @@ steps:
     ansible-galaxy collection build
   displayName: 'Package'
 
+- script: |
+    bash examples/test.sh
+  displayName: 'Test somehow'
+
 - task: GithubRelease@0
   displayName: 'Create GitHub Release'   
   condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/heads/master'))

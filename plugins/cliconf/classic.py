@@ -1,11 +1,10 @@
 DOCUMENTATION = """
 ---
-author: Nokia
+author: Freedge
 cliconf: freedge.acs
-short_description: Cliconf plugin to configure and run CLI commands on Nokia SR OS devices (classic mode)
+short_description: Cliconf plugin to configure and run CLI commands on ACS devices
 description:
-  - This plugin provides low level abstraction APIs for sending CLI commands and
-    receiving responses from Nokia SR OS network devices.
+  - Probably useless
 """
 
 import re

@@ -4,26 +4,25 @@ DOCUMENTATION = '''
 ---
 module: freedge.acs
 author: Freedge
-short_description: Return device information
+short_description: Configure serial ports of a device using output of list_configuration command
 '''
 
 EXAMPLES = '''
-- name: get device info
-  device_info:
+- name: configure ports
+  configure_ports:
+    ports:
+    - port: 42
+      list_configuration:
+      - echo off
+      - cd /ports/serial_ports
+      - ...
 '''
 
 RETURN = '''
 output:
-  description: device information gathered
+  description: the configuration of ports
   returned: success
   type: dict
-  sample:
-    network_os: "freedge.acs"
-    network_os_hostname: "Berlin"
-    network_os_model: "7750 SR-12"
-
-    network_os_version: "B-19.5.R2"
-    sros_config_mode: "classic"
 '''
 
 from ansible.module_utils.basic import AnsibleModule

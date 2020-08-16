@@ -1,3 +1,6 @@
+[![Build Status](https://dev.azure.com/freedge/freedge/_apis/build/status/freedge.acs?branchName=master)](https://dev.azure.com/freedge/freedge/_build/latest?definitionId=5&branchName=master)
+[Galaxy](https://galaxy.ansible.com/freedge/acs)
+
 # Ansible Collection - freedge.acs
 
 Current status: this is under development and not working yet.
@@ -6,13 +9,6 @@ An unofficial module to configure Avocent ACS6000 and ACS8000 devices. It connec
 
 At this moment, this is based, and still contains, source code from nokia.sros module, since it is the simplest implementation of a network_os I found.
 
-# Installation
-
-```
-ansible-galaxy collection build
-cd /myproject
-ansible-galaxy collection install -p ./ ...freedge-acs-0.0.1.tar.gz
-```
 
 # Usage
 
@@ -54,5 +50,18 @@ The syntax of the module is the same that the one from list_configuration, see u
 
 Note that the full output of the list_configuration should be written in there. At the moment, only a run in check mode is supported.
 
+# Installation
 
+## From galaxy 
+
+```
+ansible-galaxy collection install freedge.acs
+```
+
+## From sources
+```
+ansible-galaxy collection build
+cd /myproject
+ansible-galaxy collection install -p ./ ...freedge-acs-0.0.1.tar.gz
+```
 
