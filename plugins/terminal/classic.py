@@ -16,7 +16,8 @@ from ansible.plugins.terminal import TerminalBase
 class TerminalModule(TerminalBase):
     terminal_stdout_re = [
         re.compile(br".*switch>"),
-        re.compile(br"--:.*->")
+        re.compile(br"--:.*->"),
+        re.compile(br".admin@[^ ]* ...")
     ]
 
     terminal_stderr_re = [
@@ -29,3 +30,7 @@ class TerminalModule(TerminalBase):
 
     def warning(self, msg):
         self._connection.queue_message('warning', msg)
+
+    # needed when connecting as admin
+    def on_open_shell(self):
+        self._exec_cli_command('cli')
